@@ -94,6 +94,10 @@ Screenshots for this part were submitted separately.
 The command used to build the image was `docker build -t landon_hotel .`
 The command used to run the image in a container was `docker run -it -p 8080:8080 --name D387_000877914 --rm landon_hotel`
 
+### D3
+Here I will describe how I would deploy this solution to the cloud and which cloud provider I would use. As for cloud provider, I would choose Oracle Cloud. I have used them in the past, and they have served me well. They have affordable, scalable solutions with high uptime and good support. To deploy my solution to Oracle Cloud with Kubernetes, I would first push my Dockerfile to Oracle Cloud Infrastructure Registry.
+Then, the image can be pulled down and deployed using Kubernetes.
+
 ## PART E
 The needed zip file was submitted.
 
