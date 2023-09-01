@@ -28,14 +28,15 @@ export class AppComponent implements OnInit{
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
 
+  splashText :string = "";
+
     ngOnInit(){
       this.roomsearch= new FormGroup({
         checkin: new FormControl(' '),
         checkout: new FormControl(' ')
       });
 
- //     this.rooms=ROOMS;
-
+      this.getSplash().subscribe(text => this.splashText = text as string);
 
     const roomsearchValueChanges$ = this.roomsearch.valueChanges;
 
@@ -79,6 +80,10 @@ export class AppComponent implements OnInit{
 
       this.httpClient.post(this.postUrl, body, options)
         .subscribe(res => console.log(res));
+    }
+
+    getSplash() {
+      return this.httpClient.get(this.baseURL + "/splash/v1", {responseType: "text"})
     }
 
   /*mapRoom(response:HttpResponse<any>): Room[]{
