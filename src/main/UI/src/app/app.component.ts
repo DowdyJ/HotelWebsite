@@ -27,7 +27,7 @@ export class AppComponent implements OnInit{
   request!:ReserveRoomRequest;
   currentCheckInVal!:string;
   currentCheckOutVal!:string;
-
+  welcomeMessage :string = "";
   splashText :string = "";
 
     ngOnInit(){
@@ -37,14 +37,15 @@ export class AppComponent implements OnInit{
       });
 
       this.getSplash().subscribe(text => this.splashText = text as string);
+      this.getWelcome().subscribe(text => this.welcomeMessage = text as string);
 
-    const roomsearchValueChanges$ = this.roomsearch.valueChanges;
+      const roomsearchValueChanges$ = this.roomsearch.valueChanges;
 
-    // subscribe to the stream
-    roomsearchValueChanges$.subscribe(x => {
-      this.currentCheckInVal = x.checkin;
-      this.currentCheckOutVal = x.checkout;
-    });
+      // subscribe to the stream
+      roomsearchValueChanges$.subscribe(x => {
+        this.currentCheckInVal = x.checkin;
+        this.currentCheckOutVal = x.checkout;
+      });
   }
 
     onSubmit({value,valid}:{value:Roomsearch,valid:boolean}){
@@ -83,7 +84,11 @@ export class AppComponent implements OnInit{
     }
 
     getSplash() {
-      return this.httpClient.get(this.baseURL + "/splash/v1", {responseType: "text"})
+      return this.httpClient.get(this.baseURL + "/splash/v1", {responseType: "text"});
+    }
+
+    getWelcome() {
+      return this.httpClient.get(this.baseURL + "/welcome/v1", {responseType: "text"});
     }
 
   /*mapRoom(response:HttpResponse<any>): Room[]{

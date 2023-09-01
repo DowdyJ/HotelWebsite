@@ -42,7 +42,7 @@ import java.util.Optional;
 public class SplashTextResource {
 
     @RequestMapping(path = ResourceConstants.SPLASH_TEXT_V1, method = RequestMethod.GET, produces = MediaType.TEXT_PLAIN_VALUE)
-    public ResponseEntity<String> getRoomById() {
+    public ResponseEntity<String> getTimeForMeetingString() {
         String dateString = TimeConverter.getConvertedTimeStringForMeetingSplash(
                 ZonedDateTime.of(2023, 12, 5, 8, 45, 0, 0, ZoneId.of("UTC-5")));
 

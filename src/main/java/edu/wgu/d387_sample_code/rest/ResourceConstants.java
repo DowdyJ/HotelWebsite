@@ -5,4 +5,6 @@ public class ResourceConstants {
 
     public static final String SPLASH_TEXT_V1 = "/splash/v1";
 
+    public static final String WELCOME_MESSAGES = "/welcome/v1";
+
 }

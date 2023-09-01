@@ -3,23 +3,30 @@ package edu.wgu.d387_sample_code.l18n;
 import org.springframework.core.io.ClassPathResource;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class Translation {
 
-    public static String getWelcomeMessage(String localeCode) {
-        String res;
+    public static HashMap<String, Translation> translations = new HashMap<>();
 
-        Properties properties = new Properties();
+    private String localCode;
+    private Properties properties = null;
+
+
+    public Translation(String localeCode) {
+        this.localCode = localeCode;
+    }
+
+    public void InitializeLocale() {
+        this.properties = new Properties();
         InputStream localizationFileSteam = null;
         try {
-            localizationFileSteam = new ClassPathResource("welcome_" + localeCode + ".properties").getInputStream();
+            localizationFileSteam = new ClassPathResource("welcome_" + this.localCode + ".properties").getInputStream();
             properties.load(localizationFileSteam);
-            res = properties.getProperty("welcomeMessage");
         }
         catch (Exception e) {
             System.out.println(e.getStackTrace());
-            res = "ERROR: Failed to get translation string for welcomeMessage";
         }
         finally {
             if (localizationFileSteam != null) {
@@ -31,7 +38,10 @@ public class Translation {
                 }
             }
         }
+    }
 
+    public String getWelcomeMessage() {
+        String res = properties.getProperty("welcomeMessage");
         return res;
     }
 }
