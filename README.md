@@ -1,5 +1,4 @@
-# WESTERN GOVERNOR UNIVERSITY 
-## D387 – ADVANCED JAVA - PERFORMANCE ASSESSMENT 1
+# D387 – ADVANCED JAVA - PERFORMANCE ASSESSMENT 1
 
 Below are the submission details for parts A-D.
 
@@ -90,6 +89,10 @@ All changes were made as instructed in the assessment. Specifics are listed in p
 ### D1
 The Dockerfile was created at the root of the solution and commited to GitLab.
 
+### D2
+Screenshots for this part were submitted separately. 
+The command used to build the image was `docker build -t landon_hotel .`
+The command used to run the image in a container was `docker run -it -p 8080:8080 --name D387_000877914 --rm landon_hotel`
 
 ## PART E
 The needed zip file was submitted.
